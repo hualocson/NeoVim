@@ -32,7 +32,8 @@ if has('nvim')
   "for emmet
   Plug 'mattn/emmet-vim'
 
-  Plug 'tpope/vim-surround'
+ Plug 'preservim/nerdcommenter'
+ Plug 'tpope/vim-surround'
 
 endif
 

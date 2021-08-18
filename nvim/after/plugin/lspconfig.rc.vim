@@ -133,7 +133,21 @@ nvim_lsp.diagnosticls.setup {
     }
   }
 }
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+nvim_lsp.cssls.setup {
+  on_attach  = on_attach,
+  cmd = { "vscode-css-language-server.cmd", "--stdio" },
+  capabilities = capabilities,
+}
+
+nvim_lsp.html.setup {
+  on_attach  = on_attach,
+  cmd = { "vscode-html-language-server.cmd", "--stdio" },
+  capabilities = capabilities,
+}
 -- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
