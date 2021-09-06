@@ -78,8 +78,9 @@ set cursorline
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
-
-highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+if (has("termguicolors"))
+  highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+endif
 
 augroup BgHighlight
   autocmd!
@@ -132,16 +133,16 @@ runtime ./maps.vim
 
 " true color
 if exists("&termguicolors") && exists("&winblend")
-  syntax enable
-  set termguicolors
-  set winblend=0
-  set wildoptions=pum
-  set pumblend=5
-  set background=dark
-  " Use NeoSolarized
-  let g:neosolarized_termtrans=1
-  runtime ./colors/NeoSolarized.vim
-  colorscheme NeoSolarized
+    syntax enable
+    set termguicolors
+    set winblend=0
+    set wildoptions=pum
+    set pumblend=5
+    set background=dark
+    " Use NeoSolarized
+    let g:neosolarized_termtrans=1
+    runtime ./colors/NeoSolarized.vim
+    colorscheme NeoSolarized
 endif
 
 "}}}
@@ -149,10 +150,6 @@ endif
 " Extras "{{{
 " ---------------------------------------------------------------------
 set exrc
-"Enable Emmet just for html/css
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-let g:user_emmet_leader_key=','
 "}}}
 
 " vim: set foldmethod=marker foldlevel=0:

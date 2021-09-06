@@ -22,7 +22,7 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
     "html",
     "scss",
-    "cpp"
+    "c_sharp"
   },
 }
 

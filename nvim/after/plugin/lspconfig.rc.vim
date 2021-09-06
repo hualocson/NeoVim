@@ -69,12 +69,6 @@ nvim_lsp.tsserver.setup {
   filetypes = {"javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"}
 }
 
-nvim_lsp.clangd.setup {
-  on_attach = on_attach,
-  cmd = { "clangd", "--background-index" },
-  filetypes = { "c", "cpp", "objc", "objcpp" }
-}
-
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
   filetypes = { 'html','javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
@@ -133,21 +127,15 @@ nvim_lsp.diagnosticls.setup {
     }
   }
 }
---Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-nvim_lsp.cssls.setup {
-  on_attach  = on_attach,
-  cmd = { "vscode-css-language-server.cmd", "--stdio" },
+local pid = vim.fn.getpid()
+
+nvim_lsp.omnisharp.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
+  cmd = { "OmniSharp.exe", "--languageserver" , "--hostPID", tostring(pid) };
 }
 
-nvim_lsp.html.setup {
-  on_attach  = on_attach,
-  cmd = { "vscode-html-language-server.cmd", "--stdio" },
-  capabilities = capabilities,
-}
 -- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

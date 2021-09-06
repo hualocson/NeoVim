@@ -6,9 +6,12 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'cohama/lexima.vim'
-   Plug 'norcalli/nvim-colorizer.lua'
+Plug 'norcalli/nvim-colorizer.lua'
 
 if has('nvim')
+
+  "Project Management
+  Plug 'mhinz/vim-startify'
 
   Plug 'voldikss/vim-floaterm'
   Plug 'neovim/nvim-lspconfig'
@@ -29,11 +32,8 @@ if has('nvim')
   Plug 'kristijanhusak/defx-icons'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 
-  "for emmet
-  Plug 'mattn/emmet-vim'
-
- Plug 'preservim/nerdcommenter'
- Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
 
 endif
 
